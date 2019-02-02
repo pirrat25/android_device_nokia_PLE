@@ -1,0 +1,51 @@
+# NFC
+/data/vendor/nfc(/.*)?                 u:object_r:nfc_vendor_data_file:s0
+
+/securefs(/.*)?		u:object_r:persist_drm_file:s0
+
+# Bluetooth
+/(vendor|system/vendor)/bin/hci_qcomm_init	u:object_r:bluetooth_loader_exec:s0
+
+# Block devices
+/dev/block/bootdevice/by-name/persist		u:object_r:persist_block_device:s0
+/dev/block/bootdevice/by-name/dsp           u:object_r:dsp_block_device:s0
+
+/sys/class/tp_glove/tp_glove/glove_enable	u:object_r:proc_touchpanel:s0
+
+# Fingerprint
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.nokia_PLE		u:object_r:hal_fingerprint_PLE_exec:s0
+
+# Sound
+/(vendor|system/vendor)/bin/init\.ple\.smartamp_enable\.sh		u:object_r:qti_init_shell_exec:s0
+/(vendor|system/vendor)/bin/init\.ple\.smartamp_default\.sh		u:object_r:qti_init_shell_exec:s0
+
+# Fpc Fingerprint
+/sys/devices/soc/soc:fpc(/.*)?		u:object_r:fpc_sysfs:s0
+/data/fpc_images(/.*)?		u:object_r:fpc_data_file:s0
+/data/fpc(/.*)?		u:object_r:fpc_data_file:s0
+
+# For Goodix fingerprint
+/dev/gf66xx-spi		u:object_r:gx_fpd_device:s0
+/dev/ttyACM[0-9]*		u:object_r:gx_fpd_device:s0
+/dev/goodix_fp*		u:object_r:gx_fpd_device:s0
+/(system|vendor|system/vendor)/bin/gx_fpd		u:object_r:gx_fpd_exec:s0
+/(system|vendor|system/vendor)/bin/gx_fpcmd		u:object_r:gx_fpd_exec:s0
+
+# Goodix Fingerprint data
+/data/system/fingerprint(/.*)?                  u:object_r:gx_fpd_data_file:s0
+/persist/data/gxfp(/.*)?                        u:object_r:gx_fpd_data_file:s0
+
+#??
+/(vendor|system/vendor)/bin/xtwifi-*                   u:object_r:location_exec:s0
+
+# Files in rootfs
+/bt_firmware(/.*)?       u:object_r:bt_firmware_file:s0
+
+# Rild
+/(vendor|system/vendor)/radio/qcril_database/qcril.db			u:object_r:rild_file:s0
+
+# Light
+/sys/devices/soc/78b6000\.i2c/i2c-2/2-[0-9a-f]+/leds(/.*)?      u:object_r:sysfs_leds:s0
+/sys/devices/soc/leds-qpnp-[0-9]+/leds(/.*)?				    u:object_r:sysfs_leds:s0
+/sys/devices/soc/[a-z0-9]+\.sdhci/leds(/.*)?                    u:object_r:sysfs_leds:s0
+/sys/devices/soc/soc:gpio-leds/leds(/.*)?                       u:object_r:sysfs_leds:s0
